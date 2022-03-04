@@ -276,12 +276,6 @@ class testadalotes:
                     break
 
             shape_face = QgsVectorLayer(shape_dissolve['OUTPUT'], 'face', 'ogr')
-            #layer_line = QgsVectorLayer("LineString?", "layer_line", "memory" )
-
-            #vlayer = QgsVectorLayer("LineString?", "vlayer", "memory" )
-            #pr_geo = vlayer.dataProvider()
-                #pr_geo.addAttributes([field_attr])
-                #vlayer.updateFields()
             
             layer_line = QgsVectorLayer("LineString?", "layer_line", "memory" )
             pr = layer_line.dataProvider()
@@ -352,8 +346,7 @@ class testadalotes:
             global SHPCaminho
             SHPCaminho = self.outFilePath
             self.outputlineShape = QgsVectorFileWriter(SHPCaminho, self.encoding, self.Fields, QgsWkbTypes.LineString, sRs, "ESRI Shapefile")
-            
-            #pr_geo = self.layer_line_final.dataProvider()           
+                     
             for item in corrdsList:   
                 self.feature_lineg = QgsFeature()
                 geom_lineg =  QgsGeometry.fromPolylineXY(item[0])
@@ -391,108 +384,3 @@ class testadalotes:
                     arq = arquivo_lixo.split('.')
                     if arquivo_lixo.split('.')[0] == item_list.split('.')[0]:
                         os.remove(diretorio_file + '/' + item_list)
-        
-        
-            #self.layer_line_final = QgsVectorLayer(self.outFilePath, nomefinalshp, "ogr")
-            #self.layer_line_final.updateFields()                          
-            #QgsProject.instance().addMapLayer(self.layer_line_final) 
-
-            
-
-'''
-
-            
-            #QgsProject.instance().addMapLayer(layer_line)
-
-
-                    caminho = 'D:/Teles_Script/lotes_4.shp'
-                    shape_lotes = QgsVectorLayer(caminho, 'projecao', 'ogr')
-                    projeto = QgsProject().instance()
-                    pr_lotes = shape_lotes.dataProvider()
-
-
-                    parameter_dissolve = { 'COMPUTE_AREA' : False, 'COMPUTE_STATISTICS' : False, 'COUNT_FEATURES' : False, 'EXPLODE_COLLECTIONS' : False, 'FIELD' : '', 'GEOMETRY' : 'geometry', 'INPUT' : caminho, 'KEEP_ATTRIBUTES' : False, 'OPTIONS' : '', 'OUTPUT' : 'TEMPORARY_OUTPUT', 'STATISTICS_ATTRIBUTE' : '' }
-                    shape_dissolve = processing.run('gdal:dissolve', parameter_dissolve)
-
-                    shape_face = QgsVectorLayer(shape_dissolve['OUTPUT'], 'face', 'ogr')
-                    layer_line = QgsVectorLayer("LineString?", "layer_line", "memory" )
-
-                    vlayer = QgsVectorLayer("LineString?", "vlayer", "memory" )
-                    pr_geo = vlayer.dataProvider()
-
-                    field_names = pr_lotes.fields()
-                    #print(pr_geo.fields())
-                    field_names.append(QgsField('TAM_TESTADA',QVariant.Double))
-                    for field_attr in field_names:
-                        pr_geo.addAttributes([field_attr])
-                        vlayer.updateFields()
-
-                    layer_line = QgsVectorLayer("LineString?", "layer_line", "memory" )
-                    pr = layer_line.dataProvider()
-                    for feat in shape_face.getFeatures():
-                        geom_feat = feat.geometry()
-                        geom_feat_m = geom_feat.asMultiPolygon()
-                        for geom_listi in geom_feat_m:
-                            for geom_list_ti in geom_listi:
-                                feature_line = QgsFeature()
-
-                                geom_line =  QgsGeometry.fromPolylineXY(geom_list_ti)
-                                feature_line.setGeometry(geom_line)
-                                pr.addFeature(feature_line)    
-                        
-
-                    corrdsList = []
-                    for feature in shape_lotes.getFeatures():
-                        geom_Verif = feature.geometry()
-                        attr = feature.attributes()    
-                        for features_t in layer_line.getFeatures():
-                            geom_Verif_t = features_t.geometry()
-                            geom_t = geom_Verif_t.asPolyline()
-                            intersect = geom_Verif.intersection(geom_Verif_t)
-
-                            if intersect:
-                                wkb = intersect.asWkb() 
-                                geom_ogr = ogr.CreateGeometryFromWkb(wkb)
-                                tipo_line = intersect.wkbType()
-                                d = 0
-                                coords = []
-                                coords_i = []
-                                if tipo_line == 1002 or tipo_line == 2:
-                                    coords.append(QgsPointXY(geom_ogr.GetX(0), geom_ogr.GetY(0)))
-                                    coords.append(QgsPointXY(geom_ogr.GetX(1), geom_ogr.GetY(1)))  
-                                    corrdsList.append([coords, attr])
-                                else:
-                                    for items in geom_ogr:
-                                        if d == 0:
-                                            if items.GetX(0) != items.GetX(1) and items.GetY(0) != items.GetY(1):
-                                                coords_i.append(QgsPointXY(items.GetX(0), items.GetY(0)))
-                                                coords_i.append(QgsPointXY(items.GetX(1), items.GetY(1)))
-                                                item_anterior = items
-                                        else:
-                                            if items.GetX(0) != items.GetX(1) and items.GetY(0) != items.GetY(1):
-                                                if item_anterior.GetX(1) != items.GetX(0) and item_anterior.GetY(1) != items.GetY(0):
-                                                    corrdsList.append([coords_i, attr])
-                                                    coords_i = []
-                                                    coords_i.append(QgsPointXY(items.GetX(0), items.GetY(0)))
-                                                    coords_i.append(QgsPointXY(items.GetX(1), items.GetY(1)))
-                                                    item_anterior = items
-                                                else:
-                                                    coords_i.append(QgsPointXY(items.GetX(1), items.GetY(1)))
-                                                    item_anterior = items
-                                        d += 1 
-                                if coords_i:
-                                    corrdsList.append([coords_i, attr])
-                                break
-                        
-                    for item in corrdsList:   
-                        feature_lineg = QgsFeature()
-                        geom_lineg =  QgsGeometry.fromPolylineXY(item[0])
-                        tam = geom_lineg.length()
-                        item[1].append(round(tam, 3))
-                        feature_lineg.setGeometry(geom_lineg)
-                        feature_lineg.setAttributes(item[1])
-                        pr_geo.addFeature(feature_lineg)
-                        
-                    projeto.addMapLayer(vlayer) 
-                    print("Finalizado!")
-'''
