@@ -320,6 +320,7 @@ class testadalotes:
                                                 coords_i.append(QgsPointXY(items.GetX(0), items.GetY(0)))
                                                 coords_i.append(QgsPointXY(items.GetX(1), items.GetY(1)))
                                                 item_anterior = items
+                                                d += 1                                          
                                         else:
                                             if items.GetX(0) != items.GetX(1) and items.GetY(0) != items.GetY(1):
                                                 if item_anterior.GetX(1) != items.GetX(0) and item_anterior.GetY(1) != items.GetY(0):
@@ -331,7 +332,7 @@ class testadalotes:
                                                 else:
                                                     coords_i.append(QgsPointXY(items.GetX(1), items.GetY(1)))
                                                     item_anterior = items
-                                        d += 1 
+                                            d += 1 
                                 if coords_i:
                                     corrdsList.append([coords_i, attr])
                                 break  
