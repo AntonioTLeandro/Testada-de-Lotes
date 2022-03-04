@@ -6,7 +6,7 @@
 name=Testada de Lotes
 qgisMinimumVersion=3.0
 description=Batch Tested Extraction
-version=1.1
+version=1.0
 author=Antônio Teles, Gloria Santos
 email=antoniot.leandro@gmaill.com,mdgss.gloria@gmail.com
 
