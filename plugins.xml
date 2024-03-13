@@ -1,0 +1,146 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>QGIS Plugins - Official Repository</title>
+<style>
+body  {
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  width: 45em;
+}
+a{
+  color:black;
+}
+div.head {
+  background-color:#589632;
+  border-bottom-width:0;
+  color:#0;
+  display:block;
+  font-size:100%;
+  font-weight:bold;
+  margin:0;
+  padding:0.3em 1em;
+}
+div.plugin {
+  _background-color:#ddfb63;
+  border: solid 1px gray;
+  clear:both;
+  display:block;
+  padding:0 0 0.5em;
+  margin:1em;
+}
+div.menu{
+  display:block;
+  text-align: left;
+  font-size:100%;
+}
+div.description{
+  display: block;
+  float:none;
+  margin:0;
+  text-align: left;
+  padding:0.2em 0.5em 0.4em;
+  color: black;
+  font-size:85%;
+  font-weight:normal;
+  font-style: italic;
+}
+div.about{
+  display: block;
+  float:none;
+  margin:0;
+  text-align: left;
+  padding:0.2em 0.5em 0.4em;
+  color: black;
+  font-size:85%;
+  font-weight:normal;
+ }
+div.tags{
+  padding:0 0 0 1em;
+  font-size:85%;
+  font-weight:normal;
+}
+div.download, div.author, div.branch{
+  font-size: 80%;
+  padding: 0em 0em 0em 1em;
+ }
+td.menu_panel {
+  width: 25%;
+  font-size: 80%;
+}
+</style>
+</head>
+<body>
+<img src="https://qgis.org/en/_downloads/qgis-icon64.png"><h2>QGIS Python Plugins</h2>
+<p>
+NOTE: The preferred way to install QGIS plugins is via the <a href="https://docs.qgis.org/testing/en/docs/user_manual/plugins/plugins.html">Plugin Manager</a> in QGIS itself!
+QGIS will download this list automatically and make it possible to install a plugin with one click.
+</p>
+<p>
+NOTE: Here you only see a representation of the plugins working for the requested version (defined by the "<code>?qgis=x.y.z</code>" part of the url).
+</p>
+<table><tbody><tr>
+<td valign="top" class="menu_panel">
+<div class="menu"><a href="https://github.com/AntonioTLeandro/Testada-de-Lotes/archive/refs/heads/main.zip">Testada-de-Lotes</a></div>
+
+</td>
+<td class="body_panel">
+<div class="plugin">
+<div class="head">Testada-de-Lotes : 0.3</div>
+<div class="description">Generate 3D models of urban areas using DEM.</div>
+<div class="about">Create 3D Models of Urban Areas using your files or online databases.
+To generate the 3D Model, this plugin uses Aerial Imagery (Satellite Image), DTM (Digital Terrain Model aka DEM, Digital Elevation Model), DSM (Digital Surface Model) and a Footprint layer (the contour of the buildings).
+
+A sample dataset is available to make it easier for you to test this plugin: https://3dcitygen-test-dataset.s3.amazonaws.com/test-dataset-vienna.zip
+
+Opitionally, you can follow the steps under https://landscapearchaeology.org/2018/installing-python-packages-in-qgis-3-for-windows/ to install the following libraries on QGIS Python: geopandas numpy osmnx.</div>
+<div class="tags">
+Tags: python,water,openstreetmap,osm,dem,dtm,3d,view,river,urban planning,dsm</div>
+<div class="download">
+Download:
+<a href="https://github.com/AntonioTLeandro/Testada-de-Lotes/archive/refs/heads/main.zip">citygen.0.3.zip</a>
+</div>
+<div class="author">
+Author: Arthur Ruf Hosang da Costa</div>
+<div class="author">
+Version: 0.3</div>
+<div class="author">
+Trusted: False</div>
+<div class="branch">
+Experimental: True</div>
+<div class="branch">
+Deprecated: False</div>
+<div class="author">
+Minimum QGIS Version: 3.0.0</div>
+<div class="author">
+Maximum QGIS Version: 3.99.0</div>
+<div class="author">
+Home page:
+<a href="https://github.com/AntonioTLeandro/Testada-de-Lotes/tree/master">https://github.com/AntonioTLeandro/Testada-de-Lotes/tree/master</a>
+</div>
+<div class="author">
+Tracker:
+<a href="https://github.com/AntonioTLeandro/Testada-de-Lotes/issues">https://github.com/AntonioTLeandro/Testada-de-Lotes/issues</a>
+</div>
+<div class="author">
+Repository:
+<a href="https://github.com/AntonioTLeandro/Testada-de-Lotes/tree/master">https://github.com/AntonioTLeandro/Testada-de-Lotes/tree/master</a>
+</div>
+</div>
+<div class="plugin">
+<div class="head">3DCityDB Tools : 0.8.7</div>
+<div class="description">Tools to visualize and manipulate CityGML data stored in the 3D City Database</div>
+<div class="about">This plugin connects to the 3D City Database (v. 4.x) for PostgreSQL/PostGIS. It consists of:
+
+- The &amp;quot;Layer Loader&amp;quot;: it loads data as &amp;quot;classical&amp;quot; layers into QGIS. All CityGML LoDs are supported, as well as multiple citydb schemas and multiple database users. Feature attributes can be edited, changes are stored back directly into the database;
+
+- The &amp;quot;Bulk Deleter&amp;quot;: it allows to clean up the database, or to delete selected feature types;
+
+- The &amp;quot;QGIS Package Administrator&amp;quot;: it allows to install the server-side part of the plug-in and to manage database user privileges.
+
+Further details can be found in the PDF files contained in the \manuals subfolder of the plugin installation directory. On the GitHub repository further details are provided, and some test datasets can be downloaded.</div>
+
+</div>
+</div>
+</td>
+</tr></tbody></table>
+
+</body></html>
